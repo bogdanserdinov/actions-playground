@@ -1,0 +1,6 @@
+jobs:
+  test-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name:  Print the secret
+        run: echo ${{ secrets.SOME_SECRET }}
