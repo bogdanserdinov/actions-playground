@@ -11,3 +11,6 @@ jobs:
     steps:
       - name:  Print the secret
         run: echo ${{ secrets.SOME_SECRET }}
+
+      - name: Print the variable
+        run: echo ${{ vars.SOME_VAR }}
