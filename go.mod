@@ -1,6 +1,8 @@
 module playdround
 
-go 1.22.8
+go 1.22
+
+toolchain go1.22.8
 
 require (
 	github.com/bytedance/sonic v1.12.4 // indirect
