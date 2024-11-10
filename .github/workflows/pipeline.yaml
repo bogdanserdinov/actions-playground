@@ -4,17 +4,24 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  print-secrets:
+  ci:
     runs-on: ubuntu-latest
     steps:
-      - name:  Print the secret
-        run: echo ${{ secrets.SOME_SECRET }}
+      - name: Checkout
+        uses: actions/checkout@v2
 
-  print-vars:
-    needs: print-secrets
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print the variable
-        run: echo ${{ vars.SOME_VAR }}
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.18
+
+      - name: Build
+        run: go build -v ./...
+
+      - name: Test
+        run: go test -v ./...
