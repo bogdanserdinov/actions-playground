@@ -49,6 +49,14 @@ jobs:
       - name: Print image tag
         run: echo $SHORT_SHA
 
+      - name: Build and push
+        run: |
+          docker build -t playground:prod-$SHORT_SHA .
+          docker push playground:prod-$SHORT_SHA
+
+      - name: Logout of DockerHub
+        run: docker logout
+
 #      - name: Build and push
 #        uses: docker/build-push-action@v6
 #        with:
