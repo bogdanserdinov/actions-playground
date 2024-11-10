@@ -48,8 +48,8 @@ jobs:
 
       - name: Build and push
         run: |
-          docker build -t playground:prod-$SHORT_SHA .
-          docker push playground:prod-$SHORT_SHA
+          docker build -t playground:prod-${{ env.SHORT_SHA }} .
+          docker push playground:prod-${{ env.SHORT_SHA }}
 
       - name: Logout of DockerHub
         run: docker logout
