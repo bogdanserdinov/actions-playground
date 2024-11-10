@@ -26,6 +26,14 @@ jobs:
       - name: Test
         run: go test -v ./...
 
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: golang  # Specify languages to analyze
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+
   cd:
     if: (github.ref == 'refs/heads/main' && github.event_name == 'push')
     runs-on: ubuntu-latest
