@@ -47,9 +47,13 @@ jobs:
         run: echo $SHORT_SHA
 
       - name: Build and push
+        env:
+            SHORT_SHA: ${{ env.SHORT_SHA }}
+            CR_REGISTRY: bogdanserdinov
+            CR_REPOSITORY: playground
         run: |
           docker build -t playground:prod-${{ env.SHORT_SHA }} .
-          docker push playground:prod-${{ env.SHORT_SHA }}
+          docker push $CR_REGISTRY/$CR_REPOSITORY:prod-${{ env.SHORT_SHA }}
 
       - name: Logout of DockerHub
         run: docker logout
