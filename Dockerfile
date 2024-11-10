@@ -1,5 +1,5 @@
 # Base stage for building the application
-FROM golang:1.21.6-alpine AS builder
+FROM golang:1.22.8-alpine AS builder
 
 # Set the working directory
 WORKDIR /usr/src/app
@@ -17,7 +17,7 @@ COPY . .
 COPY main.go main.go
 
 # Build the Go application
-RUN GOOS=linux go build -o playground ./cmd/main.go
+RUN GOOS=linux go build -o playground main.go
 
 # Production stage
 FROM alpine:3 AS production
