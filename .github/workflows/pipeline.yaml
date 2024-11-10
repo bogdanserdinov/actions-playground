@@ -46,8 +46,11 @@ jobs:
       - name: Set Image Tag
         run: echo "SHORT_SHA=$(echo ${GITHUB_SHA} | cut -c1-8)" >> $GITHUB_ENV
 
-      - name: Build and push
-        uses: docker/build-push-action@v6
-        with:
-          push: true
-          tags: playground:prod-$SHORT_SHA
+      - name: Print image tag
+        run: echo $SHORT_SHA
+
+#      - name: Build and push
+#        uses: docker/build-push-action@v6
+#        with:
+#          push: true
+#          tags: playground:prod-$SHORT_SHA
