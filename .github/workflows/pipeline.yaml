@@ -53,8 +53,8 @@ jobs:
             ECR_REGISTRY: bogdanserdinov
             ECR_REPOSITORY: playground
         run: |
-          docker build -t ECR_REGISTRY/$CR_REPOSITORY:prod-$SHORT_SHA .
-          docker push ECR_REPOSITORY/$CR_REPOSITORY:prod-$SHORT_SHA
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:prod-$SHORT_SHA .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:prod-$SHORT_SHA
 
       - name: Logout of DockerHub
         run: docker logout
